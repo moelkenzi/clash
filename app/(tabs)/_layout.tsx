@@ -1,9 +1,12 @@
-import { Stack } from "expo-router";
+import { Tabs } from "expo-router";
 export default function InfoLayout() {
   return (
-    <Stack>
-      <Stack.Screen name='info' options={{ headerShown: false }} />
-      <Stack.Screen name='index' options={{ headerShown: false }} />
-    </Stack>
+    <Tabs>
+      <Tabs.Screen name='index' options={{ headerShown: false }} />
+      <Tabs.Screen name='discover' options={{ headerShown: false }} />
+      <Tabs.Screen name='tv' options={{ headerShown: false }} />
+      <Tabs.Screen name='favourite' options={{ headerShown: false }} />
+      <Tabs.Screen name='settings' options={{ headerShown: false }} />
+    </Tabs>
   );
 }

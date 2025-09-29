@@ -1,34 +1,30 @@
+import BigCard from "@/components/BigCard";
 import Header from "@/components/Header";
 import LiveCard from "@/components/LiveCard";
 import { liveCardData } from "@/constants/data";
 import { LinearGradient } from "expo-linear-gradient";
+import { router } from "expo-router";
 import { ChevronRight } from "lucide-react-native";
 import {
   Dimensions,
   FlatList,
   ImageBackground,
   Pressable,
+  ScrollView,
   Text,
   View,
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 const { width, height } = Dimensions.get("screen");
-const shadow = {
-  shadowColor: "#95959570",
-  shadowOffset: {
-    width: 0,
-    height: 1,
-  },
-  shadowOpacity: 0.2,
-  shadowRadius: 10,
-  elevation: 5,
-};
 
 const Home = () => {
   const { top } = useSafeAreaInsets();
   return (
-    <View className='flex-1 bg-white'>
+    <ScrollView
+      className='flex-1 bg-white'
+      showsVerticalScrollIndicator={false}
+    >
       <Header />
       <ImageBackground
         source={require("@/assets/characters/bg-1.png")}
@@ -70,9 +66,11 @@ const Home = () => {
                 experimental_backgroundImage: `linear-gradient(180deg, #C4E361 0%, #73B136 100%)`,
               }}
             >
-              <Text className='text-white font-clash-bold text-[20px] '>
-                Join Now
-              </Text>
+              <Pressable onPress={() => router.push("/info")}>
+                <Text className='text-white font-clash-bold text-[20px] '>
+                  Join Now
+                </Text>
+              </Pressable>
             </Pressable>
           </View>
         </View>
@@ -89,28 +87,26 @@ const Home = () => {
           )}
         ></FlatList>
 
-        <View className='flex-1 items-start justify-between flex-row px-5 -mt-72'>
-          <Text className='text-2xl text-[#28292D] font-snoma-semibold'>
-            Live Esport
-          </Text>
-          <ChevronRight color={"#9ca3af"} />
-          {/* <CustomSVG gradientProp={} /> */}
+        <View className='flex-1 items-start mt-10 gap-5'>
+          <View className='flex-row px-5 items-center justify-between w-full'>
+            <Text className='text-2xl text-[#28292D] font-snoma-semibold'>
+              Live Esport
+            </Text>
+            <ChevronRight color={"#9ca3af"} />
+          </View>
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            contentContainerClassName='gap-6'
+          >
+            <BigCard />
+            <BigCard />
+            <BigCard />
+            <BigCard />
+          </ScrollView>
         </View>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 export default Home;
-
-{
-  /* <View
-className='bg-white rounded-[26px]'
-style={[
-  {
-    width: width - 49,
-    height: 125,
-  },
-  shadow,
-]}
-></View> */
-}
