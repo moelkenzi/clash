@@ -4,7 +4,16 @@ module.exports = {
   content: ["./app/**/*.{js,jsx,ts,tsx}", "./components/**/*.{js,jsx,ts,tsx}"],
   presets: [require("nativewind/preset")],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        "snoma-regular": "BRSonoma-Regular",
+        "snoma-medium": "BRSonoma-Medium",
+        "snoma-semibold": "BRSonoma-SemiBold",
+        "snoma-bold": "BRSonoma-Bold",
+        "clash-regular": "Clash-Regular",
+        "clash-bold": "Clash-Bold",
+      },
+    },
   },
   plugins: [],
 };
